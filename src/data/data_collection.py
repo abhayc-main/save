@@ -40,3 +40,4 @@ with open('youtube.csv', 'w', newline='', encoding="utf-8") as csvfile:
         if video['videoId'] in video_info:
             continue
         writer.writerow(video)
+        
