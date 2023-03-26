@@ -1,7 +1,7 @@
 import csv
 from googleapiclient.discovery import build
 
-# Set up the YouTube Data API client
+# Creates a service object with API name and API version
 api_key = 'AIzaSyBokaV5eqLjEFhwp5rxN37I77BAh95ApZE'
 youtube = build('youtube', 'v3', developerKey=api_key)
 
@@ -11,14 +11,6 @@ max_results = 50
 region = "US,CA,UK"
 page_token = ''
 
-# Get the channel IDs of verified channels
-channel_ids = []
-verified_channels = youtube.channels().list(
-    part='snippet',
-    forUsername='verified',
-).execute()
-for channel in verified_channels['items']:
-    channel_ids.append(channel['id'])
 
 # Open the CSV file for appending data
 with open('youtube.csv', 'a', newline='', encoding='utf-8') as csvfile:
